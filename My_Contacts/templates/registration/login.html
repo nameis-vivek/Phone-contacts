@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h3>Login</h3>
+                {{ form.username|as_crispy_field }}
+            </div>
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                {{ form.password|as_crispy_field }}
+            </div>
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button type="submit" class=" w-40 btn btn-primary">Login</button>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

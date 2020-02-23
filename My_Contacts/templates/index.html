@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<h1>This is index page</h1>
+
+
+<div class="container">
+  <div class="row">
+    {% for con in contacts %}
+    <div class="col-sm-4">
+      <div class="card" style="width: 18rem;">
+        <img src="
+                                      {% if con.image %}
+                                      {{ contact.image.url }}
+                                      {% else %}
+                                      {% static 'images/boy.png' %}
+                                      {% endif %}
+                            " class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ con.name }}</h5>
+          <h5 class="card-title">{{ con.phone }}</h5>
+          <h5 class="card-title">{{ con.email }}</h5>
+          <p class="card-text">{{ con.info }}</p>
+          <a href="{% url 'edit' con.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'delete' con.id %}" class="btn btn-primary">Delete</a>
+        </div>
+      </div>
+      <br>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+{% endblock %}
